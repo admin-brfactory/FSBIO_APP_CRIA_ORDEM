@@ -1,0 +1,230 @@
+<mvc:View controllerName="com.fsbioenergiaZCRIAR_ORD_VENDA.controller.View" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:table="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" height="100%">
+	<Page showHeader="false" enableScrolling="true" class="sapUiContentPadding">
+		<content>
+			<table:Table id="tableResumo" class="sapUiTinyMarginTopBottom styleTable" selectionMode="None" rows="{ordemView>/oDadosResumo}"
+				visibleRowCount="10">
+				<table:extension>
+					<OverflowToolbar>
+						<Label text="" width="13rem"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://close-command-field" enabled="{ordemView>/btnAntEnable}" text="{i18n>btnAnterior}" tooltip="{i18n>btnAnterior}"
+							class="sapUiLargeMarginEnd" press="moveSemana('anterior')"/>
+						<ToolbarSpacer/>
+						<Text text="SEMANA {path:'ordemView>/numSemanaBind', formatter: '.formatter.formatSemana'}" class="sapUiMediumMarginBeginEnd"/>
+						<!--numSemana-->
+						<ToolbarSpacer/>
+						<Button iconFirst="false" enabled="{ordemView>/btnProxEnable}" icon="sap-icon://open-command-field" text="{i18n>btnProximo}"
+							tooltip="{i18n>btnProximo}" class="sapUiLargeMarginBeginEnd" press="moveSemana('proximo')"/>
+					</OverflowToolbar>
+				</table:extension>
+				<table:columns>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>cliente}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>CLIENTE}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>produto}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>PRODUTO}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>vendedor}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>VENDEDOR}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>domingo}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>DOM}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>segunda}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>SEG}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>terca}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>TER}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>quarta}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>QUA}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>quinta}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>QUI}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>sexta}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>SEX}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>sabado}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>SAB}"/>
+						</table:template>
+					</table:Column>
+				</table:columns>
+			</table:Table>
+			
+			<table:Table id="table2" selectionMode="MultiToggle" rows="{ordemView>/dadosOV}" visibleRowCount="11" class="styleTable">
+				<table:extension>
+					<OverflowToolbar >
+						<Title text="{i18n>itens} ({ordemView>/listaOvCount})" titleStyle="H4"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://action" tooltip="{i18n>btnOpcoes}" text="{i18n>btnOpcoes}" press="onClickOpcoes"/>
+						<Button tooltip="{i18n>btnVeriCredNov}" visible="false" text="{i18n>btnVeriCredNov}"/>
+						<Button tooltip="{i18n>btnExecutPesoExato}" visible="false" text="{i18n>btnExecutPesoExato}"/>
+					</OverflowToolbar>
+				</table:extension>
+				<table:columns>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>produto}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>PRODUTO}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>cliente}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>CLIENTE}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>vendedor}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>VENDEDOR}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>frete}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>FRETE}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>fretePrevisto}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>FRETE_PREVISTO}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>tipoProgramação}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>TIPO_PROGRAMACAO}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>backOffice}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>BACK_OFFICE}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>dtVencCred}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{path: 'ordemView>DT_VENC_CRED', formatter: '.formatter.formatDate'}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>pesoExato}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>PESO_EXATO}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>qtdContraAbert}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>QTD_CONT_ABER}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>qtdCarregamento}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>QTD_CARREGAMENTO}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>dtCarregamento}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{path: 'ordemView>DT_CARREGAMENTO', formatter: '.formatter.formatDate'}"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="auto" hAlign="Center">
+						<table:multiLabels>
+							<Label text="{i18n>precoUnit}"/>
+						</table:multiLabels>
+						<table:template>
+							<Text text="{ordemView>PRECO_UNITARIO}"/>
+						</table:template>
+					</table:Column>
+				</table:columns>
+			</table:Table>
+		</content>
+		<footer>
+			<Toolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button tooltip="{i18n>btnGerOrdVendas}" text="{i18n>btnGerOrdVendas}" type="Ghost" class="sapUiMediumMarginEnd" press="onGerarOV"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

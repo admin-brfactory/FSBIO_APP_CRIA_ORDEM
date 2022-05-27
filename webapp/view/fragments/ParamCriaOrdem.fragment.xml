@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table"
+	xmlns:u="sap.ui.unified">
+	<Dialog id="ParamCriaOrdem" title="{i18n>dialogParamCriaOrdtitle}" class="sapUiContentPadding" showHeader="false">
+		<VBox class="sapUiSmallMarginBottom">
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+					<Title titleStyle="H2" text="{i18n>dialogParamCriaOrdtitle}"/>
+				<ToolbarSpacer/>
+				<OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="onCloseDialog('ParamCriaOrdem')" class="sapUiSmallMargin"/>
+			</OverflowToolbar>
+		</VBox>
+		<HBox>
+			<HBox alignItems="Center">
+				<Label design="Bold" text="{i18n>tipoDoc}:"/>
+				<Select class="sapUiTinyMarginBegin" id="tpDoc" width="15rem" items="{ path: 'ordemView>/tipoDocList'}">
+					<core:Item key="{ordemView>KEY}" text="{ordemView>TIPO_DOC}"/>
+				</Select>
+			</HBox>
+			<HBox alignItems="Center" class="sapUiTinyMarginBegin">
+				<Label design="Bold" text="{i18n>orgVendas}:"/>
+				<Select class="sapUiTinyMarginBegin" id="orgVenda" width="15rem" items="{ path: 'ordemView>/orgVendasList'}">
+					<core:Item key="{ordemView>KEY}" text="{ordemView>ORG_VENDAS}"/>
+				</Select>
+			</HBox>
+			<HBox alignItems="Center" class="sapUiTinyMarginBegin">
+				<Label design="Bold" text="{i18n>canal}:"/>
+				<Select class="sapUiTinyMarginBegin" id="canal" width="15rem" items="{ path: 'ordemView>/canalList'}">
+					<core:Item key="{ordemView>KEY}" text="{ordemView>CANAL}"/>
+				</Select>
+			</HBox>
+			<HBox alignItems="Center" class="sapUiTinyMarginBegin">
+				<Label design="Bold" text="{i18n>setor}:"/>
+				<Select class="sapUiTinyMarginBegin" id="setor" width="15rem" items="{ path: 'ordemView>/setorList'}">
+					<core:Item key="{ordemView>KEY}" text="{ordemView>SETOR}"/>
+				</Select>
+			</HBox>
+		</HBox>
+		<beginButton>
+			<Button text="{i18n>btnEnviar}" type="Ghost" press="enviarDadosGerarOv"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

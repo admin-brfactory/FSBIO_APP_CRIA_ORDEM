@@ -1,0 +1,143 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table">
+	<Dialog id="cancFragment" contentWidth="100%" contentHeight="100%" showHeader="false">
+		<VBox>
+			<OverflowToolbar class="sapUiTinyMarginTop">
+				<ToolbarSpacer/>
+				<Title text="{i18n>OVs}" class="sapUiSmallMarginBegin" textAlign="Center" titleStyle="H2"/>
+				<ToolbarSpacer/>
+				<OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="onCloseDialog('cancFragment')" class="sapUiSmallMargin"/>
+			</OverflowToolbar>
+		</VBox>
+		<table:Table id="table3" ariaLabelledBy="title" selectionMode="MultiToggle" rows="{ordemView>/dadosOVFragment}" visibleRowCount="23">
+			<table:columns>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>produto}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>PRODUTO}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>cliente}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>CLIENTE}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>vendedor}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>VENDEDOR}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>frete}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>FRETE}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>backOffice}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>BACK_OFFICE}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>dtVencCred}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{path: 'ordemView>DT_VENC_CRED', formatter: '.formatter.formatDate'}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>ordVenda}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>N_OV}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>fretePrevisto}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>FRETE_PREVISTO}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>motivoRecusa}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Select width="auto" selectedKey="{ordemView>OBS_KEY}" items="{ path: 'ordemView>/observacoesList'}">
+							<core:Item key="{ordemView>OBS_KEY}" text="{ordemView>OBSERVACOES}"/>
+						</Select>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>pesoExato}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>PESO_EXATO}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>qtdContraAbert}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>QTD_CONT_ABER}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>qtdCarregamento}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>QTD_CARREGAMENTO}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>dtCarregamento}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{path: 'ordemView>DT_CARREGAMENTO', formatter: '.formatter.formatDate'}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>precoUnit}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>PRECO_UNITARIO}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+				<table:Column width="auto" hAlign="Center">
+					<table:multiLabels>
+						<Label text="{i18n>columnStatus}" textAlign="Center"/>
+					</table:multiLabels>
+					<table:template>
+						<Text text="{ordemView>STATUS_GL_ORDEM}" textAlign="Center"/>
+					</table:template>
+				</table:Column>
+			</table:columns>
+		</table:Table>
+		<buttons>
+			<Button text="{i18n>btnCancelar}" type="Ghost" press="onCancelarOV"/>
+			<Button text="{i18n>btnBloqOrdVendas}" type="Ghost" press="onBloquearOv"/>
+			<Button text="{i18n>btnDesbloqOrdVendas}" type="Ghost" press="onDesbloqOV"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
