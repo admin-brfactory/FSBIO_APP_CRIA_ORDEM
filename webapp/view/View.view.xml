@@ -11,8 +11,7 @@
 						<Button icon="sap-icon://close-command-field" enabled="{ordemView>/btnAntEnable}" text="{i18n>btnAnterior}" tooltip="{i18n>btnAnterior}"
 							class="sapUiLargeMarginEnd" press="moveSemana('anterior')"/>
 						<ToolbarSpacer/>
-						<Text text="SEMANA {path:'ordemView>/numSemanaBind', formatter: '.formatter.formatSemana'}" class="sapUiMediumMarginBeginEnd"/>
-						<!--numSemana-->
+						<Text text="{i18n>semana} {path:'ordemView>/numSemanaBind', formatter: '.formatter.formatSemana'}" class="sapUiMediumMarginBeginEnd"/>
 						<ToolbarSpacer/>
 						<Button iconFirst="false" enabled="{ordemView>/btnProxEnable}" icon="sap-icon://open-command-field" text="{i18n>btnProximo}"
 							tooltip="{i18n>btnProximo}" class="sapUiLargeMarginBeginEnd" press="moveSemana('proximo')"/>
@@ -155,7 +154,7 @@
 					</table:Column>
 					<table:Column width="auto" hAlign="Center">
 						<table:multiLabels>
-							<Label text="{i18n>tipoProgramação}"/>
+							<Label text="{i18n>tipoProgramacao}"/>
 						</table:multiLabels>
 						<table:template>
 							<Text text="{ordemView>TIPO_PROGRAMACAO}"/>

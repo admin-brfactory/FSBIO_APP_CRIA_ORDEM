@@ -2,6 +2,7 @@
 	<Dialog id="cancFragment" contentWidth="100%" contentHeight="100%" showHeader="false">
 		<VBox>
 			<OverflowToolbar class="sapUiTinyMarginTop">
+				<Title text="{i18n>itens} ({ordemView>/listaOvsCriadas})" titleStyle="H4"/>
 				<ToolbarSpacer/>
 				<Title text="{i18n>OVs}" class="sapUiSmallMarginBegin" textAlign="Center" titleStyle="H2"/>
 				<ToolbarSpacer/>

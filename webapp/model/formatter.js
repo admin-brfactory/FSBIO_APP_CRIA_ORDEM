@@ -9,21 +9,6 @@ sap.ui.define([], function() {
 		 * @param {string} sValue value to be formatted
 		 * @returns {string} formatted currency value with 2 digits
 		 */
-
-		// setInputColor: function(sStatus) {
-
-		// 	if (sStatus == "Aprovado") {
-		// 		return "green";
-		// 	} else if (sStatus == "Reprovado") {
-		// 		return "red";
-		// 	} else if (sStatus == "Analise") {
-		// 		return "yellow";
-		// 	} else {
-
-		// 	}
-
-		// 	// return sValue;
-		// }
 		formatSemana: function(sValue) {
 			if(!sValue){
 				return;
@@ -32,21 +17,6 @@ sap.ui.define([], function() {
 			sValue = sValue.substr(4);
 			
 			return sValue;
-		},
-
-		setInputColor: function(sStatus) {
-
-			if (sStatus == "Aprovado") {
-				return "Success";
-			} else if (sStatus == "Reprovado") {
-				return "Error";
-			} else if (sStatus == "Analise") {
-				return "Warning";
-			} else {
-
-			}
-
-			// return sValue;
 		},
 
 		formatDate: function(sValue) {
@@ -58,7 +28,7 @@ sap.ui.define([], function() {
 
 			return sValue;
 
-		},
+		}
 
 	};
 

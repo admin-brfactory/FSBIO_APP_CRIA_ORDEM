@@ -16,6 +16,7 @@ sap.ui.define([
 			var oViewModel = new JSONModel({
 				atuaVisibility: true,
 				listaOvCount: 0,
+				listaOvsCriadas: 0,
 				oDadosResumo: [],
 				dadosOV: [],
 				dadosGerais: [],
@@ -29,7 +30,7 @@ sap.ui.define([
 				dadosOVFragment: [],
 				numSemanaBind: "",
 				listaErros: [],
-				indiceSemana: 0
+				indiceSemana: 2
 
 			});
 			this.getView().setModel(oViewModel, "ordemView");
@@ -40,7 +41,6 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel();
 			var oViewModel = this.getView().getModel("ordemView");
 			var usuario = sap.ushell.Container.getService("UserInfo").getId();
-
 			var sURL = "/GET_ORDENS_VENDASet(USUARIO='" + usuario + "')";
 
 			sap.ui.core.BusyIndicator.show();
@@ -187,7 +187,6 @@ sap.ui.define([
 			var oViewModel = this.getView().getModel("ordemView");
 			var usuario = sap.ushell.Container.getService("UserInfo").getId();
 			var semana = oViewModel.getProperty("/numSemanaBind");
-
 			var sURL = "/GET_OVS_CRIADASSet(USUARIO='" + usuario + "',SEMANA='" + semana + "')";
 
 			sap.ui.core.BusyIndicator.show();
@@ -199,6 +198,7 @@ sap.ui.define([
 						var oTabOVSCriadas = JSON.parse(oData.TAB_OVS_CRIADAS);
 
 						oViewModel.setProperty("/dadosOVFragment", oTabOVSCriadas);
+						oViewModel.setProperty("/listaOvsCriadas", oTabOVSCriadas.length);
 						this.openCancelarOrdem().open();
 					};
 
@@ -300,7 +300,7 @@ sap.ui.define([
 
 						var oEntry = {
 							USUARIO: usuario,
-							TIPO_DOC: orgVendaKey,
+							TIPO_DOC: tipoDocKey,
 							ORG_VENDA: orgVendaKey,
 							CANAL: canalKey,
 							SETOR: setorKey,
@@ -445,7 +445,7 @@ sap.ui.define([
 			var linhaSelec = oTable.getSelectedIndices();
 			var oTableRows = oTable.getRows();
 			var oSelectItemsArray = [];
-			var x;
+			
 			if (linhaSelec.length == 0) {
 				MessageToast.show("Necessario selecionar uma ou mais linhas da tabela!");
 				return;
@@ -542,6 +542,7 @@ sap.ui.define([
 								if (oData.TAB_MENSAGEM) {
 									var oMensagem = JSON.parse(oData.TAB_MENSAGEM);
 									var oListErro = [];
+									
 									for (var index in oMensagem) {
 										if (oMensagem[index].TYPE == "S") {
 											MessageBox.success(oMensagem[index].MESSAGE);
